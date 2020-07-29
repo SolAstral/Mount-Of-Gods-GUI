@@ -1,0 +1,197 @@
+
+local MountOfGods = Instance.new("ScreenGui")
+local Main = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local yes = Instance.new("ImageLabel")
+local as = Instance.new("TextBox")
+local spawn = Instance.new("ImageButton")
+local TextLabel = Instance.new("TextLabel")
+local equip = Instance.new("ImageButton")
+local TextLabel_2 = Instance.new("TextLabel")
+
+--Properties:
+
+MountOfGods.Name = "MountOfGods"
+MountOfGods.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = MountOfGods
+Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main.BackgroundTransparency = 1.000
+Main.Position = UDim2.new(0.551617861, 0, 0.285012275, 0)
+Main.Size = UDim2.new(0, 400, 0, 349)
+Main.ZIndex = 2
+Main.Image = "rbxassetid://2790382281"
+Main.ImageColor3 = Color3.fromRGB(30, 30, 30)
+Main.ScaleType = Enum.ScaleType.Slice
+Main.SliceCenter = Rect.new(4, 4, 252, 252)
+function dragify(Frame)
+dragToggle = nil
+dragSpeed = .25 -- You can edit this.
+dragInput = nil
+dragStart = nil
+dragPos = nil
+
+function updateInput(input)
+Delta = input.Position - dragStart
+Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+game:GetService("TweenService"):Create(Frame, TweenInfo.new(.25), {Position = Position}):Play()
+end
+
+Frame.InputBegan:Connect(function(input)
+if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+dragToggle = true
+dragStart = input.Position
+startPos = Frame.Position
+input.Changed:Connect(function()
+if (input.UserInputState == Enum.UserInputState.End) then
+dragToggle = false
+end
+end)
+end
+end)
+
+Frame.InputChanged:Connect(function(input)
+if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+dragInput = input
+end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+if (input == dragInput and dragToggle) then
+updateInput(input)
+end
+end)
+end
+
+dragify(Main)
+
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.0474999994, 0, 0.0687679127, 0)
+Title.Size = UDim2.new(0, 169, 0, 24)
+Title.ZIndex = 2
+Title.Font = Enum.Font.GothamBlack
+Title.Text = "Mount Of Gods"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 24.000
+
+yes.Name = "yes"
+yes.Parent = Main
+yes.Active = true
+yes.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+yes.BackgroundTransparency = 1.000
+yes.Position = UDim2.new(0.0725000054, 0, 0.355300874, 0)
+yes.Selectable = true
+yes.Size = UDim2.new(0, 341, 0, 49)
+yes.ZIndex = 2
+yes.Image = "rbxassetid://2790382281"
+yes.ImageColor3 = Color3.fromRGB(24, 24, 24)
+yes.ScaleType = Enum.ScaleType.Slice
+yes.SliceCenter = Rect.new(4, 4, 252, 252)
+
+as.Name = "as"
+as.Parent = yes
+as.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+as.BackgroundTransparency = 1.000
+as.Size = UDim2.new(0, 341, 0, 50)
+as.ZIndex = 2
+as.Font = Enum.Font.Gotham
+as.PlaceholderText = "Item..."
+as.Text = ""
+as.TextColor3 = Color3.fromRGB(255, 255, 255)
+as.TextSize = 18.000
+
+spawn.Name = "spawn"
+spawn.Parent = Main
+spawn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+spawn.BackgroundTransparency = 1.000
+spawn.Position = UDim2.new(0.275000006, 0, 0.624641836, 0)
+spawn.Size = UDim2.new(0, 78, 0, 38)
+spawn.ZIndex = 2
+spawn.Image = "rbxassetid://2790382281"
+spawn.ImageColor3 = Color3.fromRGB(24, 24, 24)
+spawn.ScaleType = Enum.ScaleType.Slice
+spawn.SliceCenter = Rect.new(4, 4, 252, 252)
+
+TextLabel.Parent = spawn
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.507499993, 0, 0.49000001, 0)
+TextLabel.Size = UDim2.new(0.985000014, 0, 0.600000024, 0)
+TextLabel.ZIndex = 2
+TextLabel.Font = Enum.Font.GothamSemibold
+TextLabel.Text = "Spawn"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 20.000
+
+equip.Name = "equip"
+equip.Parent = Main
+equip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+equip.BackgroundTransparency = 1.000
+equip.Position = UDim2.new(0.507499993, 0, 0.624641836, 0)
+equip.Size = UDim2.new(0, 78, 0, 38)
+equip.ZIndex = 2
+equip.Image = "rbxassetid://2790382281"
+equip.ImageColor3 = Color3.fromRGB(24, 24, 24)
+equip.ScaleType = Enum.ScaleType.Slice
+equip.SliceCenter = Rect.new(4, 4, 252, 252)
+
+TextLabel_2.Parent = equip
+TextLabel_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0.507499993, 0, 0.49000001, 0)
+TextLabel_2.Size = UDim2.new(0.985000014, 0, 0.600000024, 0)
+TextLabel_2.ZIndex = 2
+TextLabel_2.Font = Enum.Font.GothamSemibold
+TextLabel_2.Text = "Equip"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 20.000
+
+-- Scripts:
+
+local function VTIE_fake_script() -- spawn.LocalScript 
+	local script = Instance.new('LocalScript', spawn)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local MakeItem = game:GetService("ReplicatedStorage").Resources.Remotes.MakeItem
+	MakeItem:FireServer(script.Parent.Parent.yes.as.Text,  Vector3.new(-81.3145828, 586.699524, 6.20587635))
+	end)
+end
+coroutine.wrap(VTIE_fake_script)()
+local function XYNA_fake_script() -- equip.LocalScript 
+	local script = Instance.new('LocalScript', equip)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local EquipMask = game:GetService("ReplicatedStorage").Resources.Remotes.EquipMask
+	    EquipMask:FireServer(script.Parent.Parent.yes.as.Text)
+	end)
+end
+coroutine.wrap(XYNA_fake_script)()
+local function KROIG_fake_script() -- MountOfGods.LocalScript 
+	local script = Instance.new('LocalScript', MountOfGods)
+
+	local frame = script.Parent.Main
+	local Open = false
+	
+	local PositionClosed = UDim2.new(0.346, 0,1, 0)
+	local PositionOpen = UDim2.new(0.346, 0,0.285, 0)
+	
+	local uis = game:GetService("UserInputService")
+	
+	uis.InputBegan:connect(function(keyCode)
+	    if keyCode.keyCode == Enum.KeyCode.RightShift then
+	         if Open then
+	            frame:TweenPosition((PositionClosed), 'Out', 'Quint',.25)
+	            Open = false
+	        else
+	            Open = true
+	            frame:TweenPosition((PositionOpen), 'Out', 'Quint',.25)
+	         end
+	      end
+	  end)
+end
+coroutine.wrap(KROIG_fake_script)()
